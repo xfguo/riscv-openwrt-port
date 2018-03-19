@@ -1,0 +1,19 @@
+
+language: c
+
+cache:
+  directories:
+    - /home/travis/dl
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq git-core build-essential libssl-dev libncurses5-dev unzip gawk python2.7 subversion
+
+git:
+  depth: 3
+
+script:
+  - ln -s /home/travis/dl openwrt/dl
+  - make build_openwrt  
+  - make build_bbl
+  - make build_qemu
