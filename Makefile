@@ -8,9 +8,8 @@ build_openwrt:
 	( \
 		cd openwrt && \
 		cp ../openwrt.config .config && \
-		./scripts/feeds update -a && \
-		./scripts/feeds install -a && \
-		make V=s \
+		$(MAKE) defconfig && \
+		$(MAKE) V=s \
 	)
 
 
@@ -27,7 +26,7 @@ build_bbl:
 			--host=riscv64-unknown-linux-gnu \
 			--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
 			--enable-print-device-tree && \
-		STAGING_DIR=$(STAGING_DIR) make bbl \
+		STAGING_DIR=$(STAGING_DIR) $(MAKE) bbl \
 	)
 
 build_qemu:
@@ -36,7 +35,7 @@ build_qemu:
 		cd build/qemu && \
 		../../riscv-qemu/configure \
 			--target-list="riscv64-softmmu" && \
-		make \
+		$(MAKE) \
 	)
 
 
