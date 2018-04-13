@@ -3,7 +3,7 @@ HOW TO BUILD
 
 ```
 # install requirements (for ubuntu 16.04)
-$ sudo apt-get install python pkg-config libglib2.0-dev gthread pixman libpixman-1-dev
+$ sudo apt-get install python pkg-config libglib2.0-dev libpixman-1-dev
 $ sudo apt-get install git-core build-essential libssl-dev libncurses5-dev unzip gawk python2.7 subversion
 
 # clone and update submodule
