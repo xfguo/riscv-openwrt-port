@@ -25,12 +25,11 @@ build_bbl:
 		READELF=$(RISCV)/bin/riscv64-openwrt-linux-readelf \
 		../../riscv-pk/configure \
 			--host=riscv64-unknown-linux-gnu \
-			--with-payload=../../openwrt/linux/vmlinux \
+			--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
 			--enable-print-device-tree && \
 		STAGING_DIR=$(STAGING_DIR) $(MAKE) bbl \
 	)
 
-			#--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
 
 build_qemu:
 	mkdir -p build/qemu
