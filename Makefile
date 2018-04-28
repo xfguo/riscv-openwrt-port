@@ -1,8 +1,8 @@
-
+JOBS?=1
 BASE_DIR=../..
 WRT_DIR=$(BASE_DIR)/openwrt
 STAGING_DIR=$(WRT_DIR)/staging_dir
-RISCV=$(STAGING_DIR)/toolchain-riscv64_riscv64_gcc-7.2.0_glibc
+RISCV=$(STAGING_DIR)/toolchain-riscv64_riscv64_gcc-7.3.0_glibc
 
 build_openwrt:
 	( \
@@ -10,7 +10,7 @@ build_openwrt:
 		cp ../openwrt.config .config && \
 		sed -i 's?_EXT_KERNEL_TREE_?'`pwd`/../riscv-linux'?' .config && \
 		$(MAKE) defconfig && \
-		$(MAKE) V=s \
+		$(MAKE) -j$(JOBS) \
 	)
 
 
@@ -25,10 +25,12 @@ build_bbl:
 		READELF=$(RISCV)/bin/riscv64-openwrt-linux-readelf \
 		../../riscv-pk/configure \
 			--host=riscv64-unknown-linux-gnu \
-			--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
+			--with-payload=../../openwrt/linux/vmlinux \
 			--enable-print-device-tree && \
 		STAGING_DIR=$(STAGING_DIR) $(MAKE) bbl \
 	)
+
+			#--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
 
 build_qemu:
 	mkdir -p build/qemu
@@ -36,7 +38,7 @@ build_qemu:
 		cd build/qemu && \
 		../../riscv-qemu/configure \
 			--target-list="riscv64-softmmu" && \
-		$(MAKE) \
+		$(MAKE) -j$(JOBS) \
 	)
 
 
