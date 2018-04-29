@@ -1,4 +1,4 @@
-HOW TO BUILD
+How to build
 ------------
 
 ```
@@ -18,5 +18,17 @@ $ make build_qemu
 # this will start qemu
 $ make qemu
 ```
+
+Porting Status
+--------------
+
+- Toolchain
+  - [x] binutils 2.30 (upstream)
+  - [x] gcc 7.3.0 (upstream)
+  - [x] glibc 2.27 (upsteam)
+- Linux Kernel
+  - [ ] linux 4.15 (upstream)
+
+----
 
 Author: Alex Guo <xfguo@xfguo.org>
