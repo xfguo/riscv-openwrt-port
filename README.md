@@ -22,12 +22,10 @@ $ make qemu
 Porting Status
 --------------
 
-- Toolchain
-  - [x] binutils 2.30 (upstream)
-  - [x] gcc 7.3.0 (upstream)
-  - [x] glibc 2.27 (upsteam)
-- Linux Kernel
-  - [ ] linux 4.15 (upstream)
+- [x] binutils 2.30 (upstream)
+- [x] gcc 7.3.0 (upstream)
+- [x] glibc 2.27 (upsteam)
+- [ ] linux 4.15 (upstream)
 
 ----
 
