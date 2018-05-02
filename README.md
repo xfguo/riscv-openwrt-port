@@ -30,4 +30,6 @@ Porting Status
 
 ----
 
-Author: Alex Guo <xfguo@xfguo.org>
+Contributers:
+- Alex Guo <xfguo@xfguo.org>
+- Yousong Zhou
