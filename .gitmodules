@@ -3,7 +3,7 @@
 	url = https://github.com/riscv/riscv-qemu.git
 [submodule "riscv-linux"]
 	path = riscv-linux
-	url = https://github.com/riscv/riscv-linux.git
+	url = https://github.com/xfguo/riscv-linux.git
 [submodule "riscv-pk"]
 	path = riscv-pk
 	url = https://github.com/riscv/riscv-pk.git
