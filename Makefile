@@ -10,7 +10,7 @@ build_openwrt:
 		cp ../openwrt.config .config && \
 		sed -i 's?_EXT_KERNEL_TREE_?'`pwd`/../riscv-linux'?' .config && \
 		$(MAKE) defconfig && \
-		$(MAKE) -j$(JOBS) \
+		$(MAKE) V=s -j$(JOBS) \
 	)
 
 
@@ -27,7 +27,8 @@ build_bbl:
 			--host=riscv64-unknown-linux-gnu \
 			--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
 			--enable-print-device-tree && \
-		STAGING_DIR=$(STAGING_DIR) $(MAKE) -j$(JOBS) bbl \
+		STAGING_DIR=$(STAGING_DIR) $(MAKE) -j$(JOBS) bbl && \
+		$(RISCV)/bin/riscv64-openwrt-linux-objcopy -S -O binary --change-addresses -0x80000000 bbl ../../bbl.bin \
 	)
 
 
@@ -40,14 +41,14 @@ build_qemu:
 		$(MAKE) -j$(JOBS) \
 	)
 
-
-
 qemu:
 	./build/qemu/riscv64-softmmu/qemu-system-riscv64 \
 		-nographic \
 		-machine virt \
 		-kernel build/bbl/bbl \
+		-append "earlyprintk root=/dev/vda rootwait" \
 		-drive file=openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-ext4.img,format=raw,id=hd0 \
 		-device virtio-blk-device,drive=hd0 \
 		-netdev user,id=usernet,hostfwd=tcp::5522-:22 \
 		-device virtio-net-device,netdev=usernet	
+		
