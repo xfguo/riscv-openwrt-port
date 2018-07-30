@@ -8,7 +8,6 @@ build_openwrt:
 	( \
 		cd openwrt && \
 		cp ../openwrt.config .config && \
-		sed -i 's?_EXT_KERNEL_TREE_?'`pwd`/../riscv-linux'?' .config && \
 		$(MAKE) defconfig && \
 		$(MAKE) V=s -j$(JOBS) \
 	)
