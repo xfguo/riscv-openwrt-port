@@ -25,8 +25,7 @@ Porting Status
 - [x] binutils 2.30 (upstream)
 - [x] gcc 7.3.0 (upstream)
 - [x] glibc 2.27 (upsteam)
-- [x] riscv-linux (xfguo/riscv-linux)
-- [ ] linux 4.15 (upstream)
+- [x] linux 4.15.18 (upstream)
 
 ----
 
