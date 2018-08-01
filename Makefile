@@ -27,7 +27,9 @@ build_bbl:
 			--with-payload=../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-vmlinux.elf \
 			--enable-print-device-tree && \
 		STAGING_DIR=$(STAGING_DIR) $(MAKE) -j$(JOBS) bbl && \
-		$(RISCV)/bin/riscv64-openwrt-linux-objcopy -S -O binary --change-addresses -0x80000000 bbl ../../bbl.bin \
+		mkdir -p ../../bin && \
+		$(RISCV)/bin/riscv64-openwrt-linux-objcopy -S -O binary --change-addresses -0x80000000 bbl ../../bin/bbl-vmlinux.bin && \
+		cp -f ../../openwrt/bin/targets/riscv64/generic-glibc/openwrt-riscv64-ext4.img ../../bin/ \
 	)
 
 
