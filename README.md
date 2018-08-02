@@ -13,6 +13,14 @@ $ git submodule update --init --recursive
 # build
 $ make build_openwrt
 $ make build_bbl
+```
+
+`bbl + vmlinux` and `rootfs` will be placed at `./bin`.
+
+Run OpenWrt on Qemu
+-------------------
+
+```
 $ make build_qemu
 
 # this will start qemu
