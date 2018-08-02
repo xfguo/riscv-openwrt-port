@@ -19,6 +19,19 @@ $ make build_qemu
 $ make qemu
 ```
 
+Run OpenWrt on Freedom Unleashed Board
+--------------------------------------
+
+First, prepare your TF card and find out the tf **disk** path (not partation). Eg /dev/sdb or /dev/mmcblk0)
+
+Then execute:
+
+```
+sudo make format-n-install-tf DISK=*disk_path*
+```
+
+Insert the TF card to SiFive Unleashed board and enjoy~
+
 Porting Status
 --------------
 
@@ -30,5 +43,9 @@ Porting Status
 ----
 
 Contributers:
+
 - Alex Guo <xfguo@xfguo.org>
+
+Thanks:
+
 - Yousong Zhou
